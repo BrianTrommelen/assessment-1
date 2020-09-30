@@ -1,4 +1,4 @@
-package sample;
+package VAT.ShapeMaker;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
