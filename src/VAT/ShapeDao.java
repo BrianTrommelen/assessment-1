@@ -1,4 +1,4 @@
-package VAT.ShapeMaker;
+package VAT;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

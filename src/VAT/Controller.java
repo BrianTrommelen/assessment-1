@@ -1,4 +1,4 @@
-package VAT.ShapeMaker;
+package VAT;
 
 public class Controller {
 }
