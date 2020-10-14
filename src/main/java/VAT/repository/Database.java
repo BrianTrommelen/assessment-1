@@ -1,5 +1,7 @@
 package VAT.repository;
 
+import VAT.Shape;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +12,19 @@ abstract class Database<E> {
     private static final String USER = "App";
     private static final String PASS = "QGj5s#8_EBW9Bu&";
 
-    public List<E> query(String sql, String ... params) {
-        List<E> results = new ArrayList<>();
+    @FunctionalInterface
+    interface UsesStatement<R> {
+        R apply(PreparedStatement statement) throws SQLException;
+    }
 
-        try (java.sql.Connection connection = DriverManager.getConnection(URL, USER, PASS)) {
-            try (PreparedStatement statement = connection.prepareStatement(sql)){
-                ResultSet resultSet = statement.executeQuery();
-                while (resultSet.next()) {
-                    E entity = recordToEntity(resultSet);
-                    results.add(entity);
-                }
-            }
-            return results;
+    public <R> R query(String sql, UsesStatement<R> operator ) {
+
+        try (java.sql.Connection connection = DriverManager.getConnection(URL, USER, PASS);
+             PreparedStatement statement = connection.prepareStatement(sql)
+        ) {
+            R result = operator.apply(statement);
+
+            return result;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

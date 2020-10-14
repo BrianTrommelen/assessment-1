@@ -6,6 +6,10 @@ import java.util.List;
 public class Shapes {
     private List<Shape> shapes;
 
+    public Shapes(List<Shape> shapes) {
+        this.shapes = shapes;
+    }
+
     public Shapes() {
         this.shapes = new ArrayList<>();
     }
