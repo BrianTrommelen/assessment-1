@@ -28,30 +28,40 @@ public class Main {
 
         ShapeService shapeService = new ShapeService(shapeDatabase);
 
-        // get shapes from database to show in list.
+// DATABASE COMMANDS:
 
 //      Create
-//        Shape shape = new Shape("Orb");
-//        System.out.println("Created: " + shape);
-//        shapeService.create(shape);
+        Shape shape = new Shape("Orb");
+        System.out.println("Created: " + shape);
+        shapeService.create(shape);
 
 //      Get all
-//        shapeService.getAll();
+        shapeService.getAll();
 
 //      Get where id
 //        System.out.println("Get from database: " + shapeService.getSingle(1));
 
 //      Update by id
-        shapeService.getAll();
-        Shape old = shapeService.getSingle(7);
-        Shape toUpdate = shapeService.getSingle(7);
-        toUpdate.setName("nee");
-        // Send new shape with info to replace shape of id.
-        shapeService.update(7, toUpdate);
-        System.out.println("--------------------");
-        shapeService.getAll();
+//        shapeService.getAll();
+//        Shape old = shapeService.getSingle(8);
+//        Shape toUpdate = shapeService.getSingle(8);
+//        toUpdate.setName("Heart");
+//        // Send new shape with info to replace shape of id.
+//        shapeService.update(8, toUpdate);
+//        System.out.println("--------------------");
+//        shapeService.getAll();
+//
+//        System.out.println("Updated: " + old + " To: " + toUpdate);
 
-        System.out.println("Updated: " + old + " To: " + toUpdate);
 
+//      Delete by id
+//        shapeService.getAll();
+//        // Delete shape with id
+//        shapeService.deleteSingle(8);
+//        System.out.println("--------------------");
+//        shapeService.getAll();
+
+//      Delete all from shape table
+//        shapeService.deleteAll();
     }
 }

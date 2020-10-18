@@ -4,6 +4,7 @@ import VAT.Shape;
 import VAT.Main;
 import VAT.Shapes;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -45,18 +46,22 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
     }
 
     @Override
-    public void delete(Shape person) {
+    public void delete(Shape shape) {
 
     }
 
     @Override
     public void delete(int id) {
+        query("DELETE FROM shape WHERE id = ?", statement -> {
+            statement.setInt(1, id);
 
+            return statement.execute();
+        });
     }
 
     @Override
     public void deleteAll() {
-
+        query("DELETE FROM shape", PreparedStatement::execute);
     }
 
     public List<Shapes> getAll() {

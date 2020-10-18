@@ -33,4 +33,12 @@ public class ShapeService {
     public void update(int id, Shape shape) {
         database.update(id, shape);
     }
+
+    public void deleteSingle(int id) {
+        database.delete(id);
+    }
+
+    public void deleteAll() {
+        database.deleteAll();
+    }
 }
