@@ -1,15 +1,14 @@
-package VAT.repository;
+package repository;
 
-import VAT.Shape;
+import Shape.ShapeActions;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ShapeDatabase extends Database{
+public class ShapeDatabase extends Database {
 
-
-    public List<Shape> getAll() {
+    public List<ShapeActions> getAll() {
         return super.query("SELECT * FROM shape");
     }
 
@@ -20,6 +19,6 @@ public class ShapeDatabase extends Database{
 
         //wat je wilt teruggeven van de database, opslaan als nieuw object:
 
-        return new Shape(id, name);
+        return new ShapeActions();
     }
 }

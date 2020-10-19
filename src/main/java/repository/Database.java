@@ -1,4 +1,4 @@
-package VAT.repository;
+package repository;
 
 import java.sql.*;
 import java.util.ArrayList;
