@@ -1,25 +1,21 @@
-package VAT.service;
+package Service;
 
-import VAT.Shape;
-import VAT.Shapes;
-import VAT.repository.ShapeDatabase;
+import Shape.Shape;
+import Shape.ShapeActions;
+import repository.ShapeDatabase;
 
 import java.util.List;
 
 public class ShapeService {
-    private final ShapeDatabase database;
+    private final ShapeDatabase database = new ShapeDatabase();
 
 
-    public ShapeService(ShapeDatabase database) {
-        this.database = database;
+    public ShapeService() {
+
     }
 
-    public void getAll() {
-        List<Shapes> all = database.getAll();
-
-        for (Shapes shape : all) {
-            System.out.println(shape.toString());
-        }
+    public List<Shape> getAll() {
+        return database.getAll();
     }
 
     public void create(Shape shape) {

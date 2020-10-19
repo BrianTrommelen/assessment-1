@@ -1,6 +1,8 @@
-package VAT.repository;
+package repository;
 
-import VAT.Shape;
+import Shape.Shape;
+import Shape.Shapes;
+import Shape.ShapeActions;
 
 import java.sql.*;
 import java.util.ArrayList;

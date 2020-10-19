@@ -1,32 +1,48 @@
 package VAT;
 
-import VAT.repository.ShapeDatabase;
-//import javafx.application.Application;
-//import javafx.scene.Scene;
-//import javafx.scene.layout.BorderPane;
-//import javafx.stage.Stage;
+import Shape.ShapeActions;
+import Shape.Shapes;
+import javafx.application.Application;
+import javafx.geometry.Side;
+import javafx.scene.Scene;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.stage.Stage;
 
-import VAT.service.ShapeService;
+public class Main extends Application {
 
-import java.util.List;
+    private Shapes shapes;
 
-public class Main {
+    @Override
+    public void init() {
+        this.shapes = new ShapeActions();
+        System.out.println(shapes.getAllShapes());
+    }
 
+    @Override
+    public void start(Stage stage) {
+        stage.setTitle("VAT Calculator");
 
-//    @Override
-//    public void start(Stage stage) {
-//        stage.setTitle("Hello World");
-//        BorderPane layout = new BorderPane();
-//        Scene view = new Scene(layout, 300, 275);
-//        stage.setScene(view);
-//        stage.show();
-//    }
+        InputView shapesView = new InputView(shapes);
+
+        TabPane layout = new TabPane();
+        layout.setSide(Side.TOP);
+
+        Tab addShape = new Tab("Add Shape:", shapesView.getView());
+        layout.getTabs().add(addShape);
+
+        layout.getSelectionModel().select(addShape);
+
+        Scene view = new Scene(layout, 400, 400);
+        stage.setScene(view);
+        stage.show();
+    }
 
     public static void main(String[] args) {
-//        launch(args);
-        ShapeDatabase shapeDatabase = new ShapeDatabase();
+        launch(args);
+//        ShapeDatabase shapeDatabase = new ShapeDatabase();
 
-        ShapeService shapeService = new ShapeService(shapeDatabase);
+//        ShapeService shapeService = new ShapeService(shapeDatabase);
 
 // DATABASE COMMANDS:
 

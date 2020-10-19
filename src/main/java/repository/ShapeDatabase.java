@@ -1,8 +1,6 @@
-package VAT.repository;
+package repository;
 
-import VAT.Shape;
-import VAT.Main;
-import VAT.Shapes;
+import Shape.Shape;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,10 +62,10 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
         query("DELETE FROM shape", PreparedStatement::execute);
     }
 
-    public List<Shapes> getAll() {
-        return (List<Shapes>) query("SELECT * FROM shape", statement -> {
+    public List getAll() {
+        return (List<Shape>) query("SELECT * FROM shape", statement -> {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM shape");
-            List<Shapes> result = new ArrayList<>();
+            List<Shape> result = new ArrayList<>();
 
             while (resultSet.next()) {
                 Shape shape = recordToEntity(resultSet);

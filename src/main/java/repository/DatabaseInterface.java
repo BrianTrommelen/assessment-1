@@ -1,7 +1,8 @@
-package VAT.repository;
+package repository;
 
-import VAT.Shape;
-import VAT.Shapes;
+import Shape.Shape;
+import Shape.Shapes;
+import Shape.ShapeActions;
 
 import java.util.List;
 
