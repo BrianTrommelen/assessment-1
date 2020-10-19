@@ -87,15 +87,4 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
 
         return new Shape(id, name);
     }
-
-    //    public int getSingle() {
-//        return super.query("SELECT * FROM shape WHERE id = ?", );
-//    }
-//
-//    public void updateSingle(Shape shape) {
-//        String sql = "UPDATE shape SET name = ? WHERE id = ?";
-//
-//
-//        super.query(sql);
-//    }
 }

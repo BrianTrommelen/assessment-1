@@ -32,26 +32,4 @@ abstract class Database<E> {
     }
 
     abstract E recordToEntity(ResultSet resultSet) throws SQLException;
-
-// OLD DEFAULT CONNECTION LAYER:
-//    public static void main(String[] args){
-//        System.out.println("Connecting database...");
-//
-//        try (java.sql.Connection connection = DriverManager.getConnection(URL, USER, PASS)) {
-//            System.out.println("Database connected!");
-//
-//            Statement statement = connection.createStatement();
-//
-//            ResultSet results = statement.executeQuery("SELECT * FROM shape");
-//
-//
-//            while (results.next()) {
-//                System.out.println(results.getInt("id"));
-//                System.out.println(results.getString("name"));
-//            }
-//
-//        } catch (SQLException e) {
-//            throw new IllegalStateException("Cannot connect the database!", e);
-//        }
-//    }
 }
