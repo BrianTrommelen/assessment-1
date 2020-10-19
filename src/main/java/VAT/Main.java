@@ -16,6 +16,7 @@ public class Main extends Application {
     @Override
     public void init() {
         this.shapes = new ShapeActions();
+        System.out.println(shapes.getAllShapes());
     }
 
     @Override
@@ -37,5 +38,47 @@ public class Main extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) { launch(args); }
+    public static void main(String[] args) {
+        launch(args);
+//        ShapeDatabase shapeDatabase = new ShapeDatabase();
+
+//        ShapeService shapeService = new ShapeService(shapeDatabase);
+
+// DATABASE COMMANDS:
+
+//      Create
+//        Shape shape = new Shape("Orb");
+//        System.out.println("Created: " + shape);
+//        shapeService.create(shape);
+
+//      Get all
+//        shapeService.getAll();
+
+//      Get by id
+//        System.out.println("Get from database: " + shapeService.getSingle(4));
+
+//      Update by id
+//        shapeService.getAll();
+//        Shape old = shapeService.getSingle(7);
+//
+//        Shape toUpdate = shapeService.getSingle(7);
+//        toUpdate.setName("Cube");
+//        // Send new shape with info to replace shape of id.
+//        shapeService.update(7, toUpdate);
+//        System.out.println("--------------------");
+//        shapeService.getAll();
+//
+//        System.out.println("Updated: " + old + " To: " + toUpdate);
+
+
+//      Delete by id
+//        shapeService.getAll();
+//        // Delete shape with id
+//        shapeService.deleteSingle(7);
+//        System.out.println("--------------------");
+//        shapeService.getAll();
+
+//      Delete all from shape table
+//        shapeService.deleteAll();
+    }
 }

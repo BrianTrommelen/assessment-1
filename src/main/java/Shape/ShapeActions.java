@@ -1,5 +1,7 @@
 package Shape;
 
+import Service.ShapeService;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -7,7 +9,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ShapeActions implements Shapes {
-    private List<Shape> shapeList = new ArrayList<>();
+    private List<Shape> shapeList;
+    private ShapeService shapeService = new ShapeService();
 
     @Override
     public void saveShape(Shape shape) {
@@ -28,7 +31,7 @@ public class ShapeActions implements Shapes {
 
     @Override
     public Collection<Shape> getAllShapes() {
-        return shapeList;
+        return shapeList = shapeService.getAll();
     }
 
     @Override

@@ -46,7 +46,7 @@ public class InputView {
         Label chosenShape = new Label();
 
         // Write a event that tracks the chosen shape
-        comboBox.setOnAction(new EventHandler<>() {
+        comboBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 chosenShape.setText("Chosen shape: " + comboBox.getValue());
@@ -93,7 +93,7 @@ public class InputView {
         // Event for the save button
         addButton.setOnAction((e) -> {
             String name = nameField.getText();
-            shapes.saveShape(new Shape(name));
+//            shapes.saveShape(new Shape(name));
             nameField.clear();
         });
 
