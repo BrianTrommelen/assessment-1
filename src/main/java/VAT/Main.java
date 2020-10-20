@@ -1,5 +1,17 @@
 package VAT;
 
+
+import Repository.ShapeDatabase;
+import Service.ShapeService;
+
+import Shapes.Cone;
+import Shapes.Cylinder;
+import Shapes.Cube;
+import Shapes.Sphere;
+import Shapes.Pyramid;
+
+
+import Shape.Shape;
 import Shape.ShapeActions;
 import Shape.Shapes;
 import javafx.application.Application;
@@ -8,6 +20,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends Application {
 
@@ -39,44 +55,45 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
-//        ShapeDatabase shapeDatabase = new ShapeDatabase();
+//        launch(args);
 
-//        ShapeService shapeService = new ShapeService(shapeDatabase);
+// Create mew shapeService
+        ShapeService shapeService = new ShapeService();
+
 
 // DATABASE COMMANDS:
 
 //      Create
-//        Shape shape = new Shape("Orb");
-//        System.out.println("Created: " + shape);
-//        shapeService.create(shape);
+//        Cube cube = new Cube( 0,"Naam" ,30, 20, 20);
+//
+//
+//        System.out.println("Created: " + cube);
+//        shapeService.create(cube);
 
 //      Get all
-//        shapeService.getAll();
+//        System.out.println(shapeService.getAll());
+
 
 //      Get by id
-//        System.out.println("Get from database: " + shapeService.getSingle(4));
+//        System.out.println(shapeService.getSingle(1).calculateVolume());
+//        System.out.println("Get from database: " + shapeService.getSingle(1));
 
 //      Update by id
 //        shapeService.getAll();
-//        Shape old = shapeService.getSingle(7);
 //
-//        Shape toUpdate = shapeService.getSingle(7);
-//        toUpdate.setName("Cube");
+//        Pyramid pr = new Pyramid(0,"Pyramid", 21, 42);
+//        Sphere sphere = new Sphere(0,"Sphere", 21);
+
 //        // Send new shape with info to replace shape of id.
-//        shapeService.update(7, toUpdate);
+//        shapeService.update(2, pr);
 //        System.out.println("--------------------");
 //        shapeService.getAll();
-//
-//        System.out.println("Updated: " + old + " To: " + toUpdate);
 
 
 //      Delete by id
-//        shapeService.getAll();
-//        // Delete shape with id
-//        shapeService.deleteSingle(7);
-//        System.out.println("--------------------");
-//        shapeService.getAll();
+        // Delete shape with id
+//        shapeService.deleteSingle(4);
+
 
 //      Delete all from shape table
 //        shapeService.deleteAll();

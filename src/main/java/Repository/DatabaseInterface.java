@@ -1,8 +1,8 @@
-package repository;
+package Repository;
 
 import Shape.Shape;
-import Shape.Shapes;
-import Shape.ShapeActions;
+
+
 
 import java.util.List;
 
@@ -19,5 +19,5 @@ public interface DatabaseInterface {
 
     void deleteAll();
 
-    List<Shapes> getAll();
+    List<Shape> getAll();
 }
