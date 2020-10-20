@@ -1,18 +1,13 @@
 package Service;
 
 import Shape.Shape;
-import Shape.ShapeActions;
-import repository.ShapeDatabase;
+import Repository.ShapeDatabase;
+import Shapes.Cylinder;
 
 import java.util.List;
 
 public class ShapeService {
     private final ShapeDatabase database = new ShapeDatabase();
-
-
-    public ShapeService() {
-
-    }
 
     public List<Shape> getAll() {
         return database.getAll();

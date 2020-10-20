@@ -1,12 +1,6 @@
-package repository;
-
-import Shape.Shape;
-import Shape.Shapes;
-import Shape.ShapeActions;
+package Repository;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 abstract class Database<E> {
     //  Connection variables
