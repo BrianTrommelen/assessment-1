@@ -10,6 +10,12 @@ public class Sphere extends Shape implements Calculate {
         super(id, name);
         this.shapeNum = 1;
         this.radius = radius;
+        this.volume = this.calculateVolume();
+    }
+
+    @Override
+    public double getVolume() {
+        return volume;
     }
 
     @Override
@@ -25,7 +31,7 @@ public class Sphere extends Shape implements Calculate {
     @Override
     public double calculateVolume() {
         double volume = (((double)1/3) + 1)*Math.PI*Math.pow(radius, 3);
-        return volume;
+        return (double)Math.round(volume * 100d) / 100d;
     }
 
     @Override
@@ -34,6 +40,8 @@ public class Sphere extends Shape implements Calculate {
                 "radius=" + radius +
                 ", id=" + id +
                 ", name='" + name + '\'' +
+                ", shapeNum=" + shapeNum +
+                ", volume=" + volume +
                 '}';
     }
 }

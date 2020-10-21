@@ -13,7 +13,7 @@ import java.util.List;
 public class ShapeDatabase extends Database implements DatabaseInterface {
     @Override
     public void save(Shape shape) {
-        query("INSERT INTO shape_information (shapeId, name, radius, width, length, height) VALUES (?, ?, ?, ?, ?, ?)", statement -> {
+        query("INSERT INTO shape_information (shapeId, name, radius, width, length, height, volume) VALUES (?, ?, ?, ?, ?, ?, ?)", statement -> {
 
             statement.setInt(1, shape.getShapeNum());
 
@@ -41,6 +41,13 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
                 statement.setDouble(6, shape.getHeight());
             } else {
                 statement.setString(6, null);
+            }
+
+
+            if (!(shape.getVolume() == 0)) {
+                statement.setDouble(7, shape.getVolume());
+            } else {
+                statement.setDouble(7, 0);
             }
 
             return statement.execute();
@@ -49,7 +56,7 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
 
     @Override
     public void update(int id, Shape shape) {
-        query("UPDATE shape_information SET shapeId = ?, name = ?, radius = ?, width = ?, length = ?, height = ?  WHERE id = ?", statement -> {
+        query("UPDATE shape_information SET shapeId = ?, name = ?, radius = ?, width = ?, length = ?, height = ?, volume = ?  WHERE id = ?", statement -> {
             statement.setInt(1, shape.getShapeNum());
 
             statement.setString(2, shape.getName());
@@ -78,7 +85,13 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
                 statement.setString(6, null);
             }
 
-            statement.setInt(7, id);
+            if (!(shape.getVolume() == 0)) {
+                statement.setDouble(7, shape.getVolume());
+            } else {
+                statement.setDouble(7, 0);
+            }
+
+            statement.setInt(8, id);
 
             return statement.execute();
         });
@@ -143,11 +156,12 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
         double width = resultSet.getDouble(5);
         double length = resultSet.getDouble(6);
         double height = resultSet.getDouble(7);
+        double volume = resultSet.getDouble(8);
 
         if (shape == 1) return new Sphere(shapeId, name, radius);
-        else if (shape == 2) return new Cylinder(shapeId, name, radius, height);
-        else if (shape == 3) return new Cone(shapeId, name, radius, height);
-        else if (shape == 4) return new Pyramid(shapeId, name, width, height);
+        else if (shape == 2) return new Cylinder(shapeId, name, volume, height);
+        else if (shape == 3) return new Cone(shapeId, name, volume, height);
+        else if (shape == 4) return new Pyramid(shapeId, name, volume, width, height);
         else if (shape == 5) return new Cube(shapeId, name, width, length, height);
         else return null;
     }

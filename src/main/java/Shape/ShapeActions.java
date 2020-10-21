@@ -15,14 +15,12 @@ public class ShapeActions implements Shapes {
     @Override
     public void saveShape(Shape shape) {
         System.out.println("Saved shape\n" + shape);
-        shapeList.add(shape);
+        shapeService.create(shape);
     }
 
     @Override
-    public Shape searchShape(String name) {
-        Optional<Shape> found = shapeList.stream()
-                .filter(p -> p.getName().equals(name)).findFirst();
-        Shape result = found.isEmpty() ? null : found.get();
+    public Shape searchShape(int id) {
+        Shape result = shapeService.getSingle(id);
 
         System.out.println(result == null ? "No shape found" : "found: " + result);
 

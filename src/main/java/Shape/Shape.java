@@ -6,6 +6,7 @@ public abstract class Shape implements Calculate  {
     protected int id;
     protected String name;
     protected int shapeNum;
+    protected double volume;
 
     public Shape(int id,String name) {
         this.id = id;
@@ -16,6 +17,8 @@ public abstract class Shape implements Calculate  {
         this.id = 0;
         this.name = name;
     }
+
+    public abstract double getVolume();
 
     public int getShapeNum() {
         return 0;
@@ -40,7 +43,6 @@ public abstract class Shape implements Calculate  {
     public double getHeight() {
         return 0;
     }
-
 
     @Override
     public int hashCode() {
