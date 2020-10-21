@@ -59,7 +59,9 @@ public class Main extends Application {
 
 // Create mew shapeService
         ShapeService shapeService = new ShapeService();
+        ShapeActions shapeActions = new ShapeActions();
 
+        shapeActions.searchShape(1);
 
 // DATABASE COMMANDS:
 
@@ -82,11 +84,11 @@ public class Main extends Application {
 //        shapeService.getAll();
 //
 //        Pyramid pr = new Pyramid(0,"Pyramid", 21, 42);
-//        Sphere sphere = new Sphere(0,"Sphere", 21);
+        Sphere sphere = new Sphere(0,"Sphere", 12.3);
 
 //        // Send new shape with info to replace shape of id.
-//        shapeService.update(2, pr);
-//        System.out.println("--------------------");
+        shapeService.update(1, sphere);
+        System.out.println("--------------------");
 //        shapeService.getAll();
 
 

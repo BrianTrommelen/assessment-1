@@ -12,6 +12,12 @@ public class Cone extends Shape implements Calculate {
         this.shapeNum = 3;
         this.radius = radius;
         this.height = height;
+        this.volume = this.calculateVolume();
+    }
+
+    @Override
+    public double getVolume() {
+        return volume;
     }
 
     @Override
@@ -31,8 +37,8 @@ public class Cone extends Shape implements Calculate {
 
     @Override
     public double calculateVolume() {
-        double volume = ((double)1/3)* (Math.pow(radius, 2)*Math.PI)*height;
-        return volume;
+        double volume = Math.round (((double)1/3)* (Math.pow(radius, 2)*Math.PI)*height);
+        return (double)Math.round(volume * 100d) / 100d;
     }
 
     @Override
@@ -42,6 +48,8 @@ public class Cone extends Shape implements Calculate {
                 ", height=" + height +
                 ", id=" + id +
                 ", name='" + name + '\'' +
+                ", shapeNum=" + shapeNum +
+                ", volume=" + volume +
                 '}';
     }
 }

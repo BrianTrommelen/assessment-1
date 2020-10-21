@@ -8,12 +8,18 @@ public class Cube extends Shape implements Calculate {
     private double length;
     private double height;
 
-    public Cube(int id,String name, double width, double length, double height) {
+    public Cube(int id, String name, double width, double length, double height) {
         super(id, name);
         this.shapeNum = 5;
         this.width = width;
         this.length = length;
         this.height = height;
+        this.volume = this.calculateVolume();
+    }
+
+    @Override
+    public double getVolume() {
+        return volume;
     }
 
     @Override
@@ -38,8 +44,8 @@ public class Cube extends Shape implements Calculate {
 
     @Override
     public double calculateVolume() {
-        double volume = width*length*height;
-        return volume;
+        double volume = Math.round (width*length*height);
+        return (double)Math.round(volume * 100d) / 100d;
     }
 
     @Override
@@ -50,6 +56,8 @@ public class Cube extends Shape implements Calculate {
                 ", height=" + height +
                 ", id=" + id +
                 ", name='" + name + '\'' +
+                ", shapeNum=" + shapeNum +
+                ", volume=" + volume +
                 '}';
     }
 }
