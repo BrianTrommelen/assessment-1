@@ -2,7 +2,6 @@ package Service;
 
 import Shape.Shape;
 import Repository.ShapeDatabase;
-import Shapes.Cylinder;
 
 import java.util.List;
 
@@ -32,4 +31,6 @@ public class ShapeService {
     public void deleteAll() {
         database.deleteAll();
     }
+
+    public List<String> getUsableShapes() { return database.getUsableShapes(); }
 }

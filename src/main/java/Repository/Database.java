@@ -1,12 +1,11 @@
 package Repository;
-
 import java.sql.*;
 
 abstract class Database<E> {
     //  Connection variables
     private static final String URL = "jdbc:mysql://localhost:3306/shapes";
-    private static final String USER = "App";
-    private static final String PASS = "QGj5s#8_EBW9Bu&";
+    private static final String USER = "root";
+    private static final String PASS = "";
 
     @FunctionalInterface
     interface UsesStatement<R> {

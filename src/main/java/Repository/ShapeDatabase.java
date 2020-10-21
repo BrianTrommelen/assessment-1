@@ -3,7 +3,6 @@ package Repository;
 import Shape.Shape;
 import Shapes.*;
 
-import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -141,6 +140,21 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
             while (resultSet.next()) {
                 Shape shape = recordToEntity(resultSet);
                 result.add(shape);
+            }
+            return result;
+        });
+    }
+
+    @Override
+    public List<String> getUsableShapes() {
+        String query = "SELECT * FROM shape";
+
+        return (List<String>) query(query, statement -> {
+            ResultSet resultSet = statement.executeQuery(query);
+            List<String> result = new ArrayList<>();
+
+            while (resultSet.next()) {
+                result.add(resultSet.getString(2));
             }
             return result;
         });

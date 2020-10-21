@@ -2,10 +2,8 @@ package Shape;
 
 import Service.ShapeService;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ShapeActions implements Shapes {
@@ -31,6 +29,9 @@ public class ShapeActions implements Shapes {
     public Collection<Shape> getAllShapes() {
         return shapeList = shapeService.getAll();
     }
+
+    @Override
+    public List<String> getUsableShapes() { return shapeService.getUsableShapes(); }
 
     @Override
     public void deleteShape(Shape shape) {

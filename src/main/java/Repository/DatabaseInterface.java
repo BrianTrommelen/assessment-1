@@ -2,8 +2,6 @@ package Repository;
 
 import Shape.Shape;
 
-
-
 import java.util.List;
 
 public interface DatabaseInterface {
@@ -20,4 +18,6 @@ public interface DatabaseInterface {
     void deleteAll();
 
     List<Shape> getAll();
+
+    List<String> getUsableShapes();
 }
