@@ -26,6 +26,8 @@ public class ShapeService {
         return database.getById(id);
     }
 
+    public void getLatestId() { database.getLatestId(); }
+
     public void update(int id, Shape shape) {
         database.update(id, shape);
     }

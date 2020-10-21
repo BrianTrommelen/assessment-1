@@ -3,18 +3,18 @@ package Shape;
 import java.util.Objects;
 
 public class Shape {
-    private int id;
+    private int shapeId;
     private String name;
     private double radius;
 
     public Shape(int id, String name) {
-        this.id = id;
+        this.shapeId = id;
         this.name = name;
         this.radius = 0;
     }
 
     public Shape(int id, String name, double radius) {
-        this.id = id;
+        this.shapeId = id;
         this.name = name;
         this.radius = radius;
     }
@@ -34,7 +34,7 @@ public class Shape {
 
     @Override
     public String toString() {
-        return "Shape: " + name;
+        return name;
     }
 
     @Override

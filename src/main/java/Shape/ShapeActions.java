@@ -2,7 +2,6 @@ package Shape;
 
 import Service.ShapeService;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +14,7 @@ public class ShapeActions implements Shapes {
     @Override
     public void saveShape(Shape shape) {
         System.out.println("Saved shape\n" + shape);
-        shapeList.add(shape);
+        shapeService.create(shape);
     }
 
     @Override
@@ -32,6 +31,16 @@ public class ShapeActions implements Shapes {
     @Override
     public Collection<Shape> getAllShapes() {
         return shapeList = shapeService.getAll();
+    }
+
+    @Override
+    public Shape getShapeById(int shapeId) {
+        return shapeService.getSingle(shapeId);
+    }
+
+    @Override
+    public int latestShape() { shapeService.getLatestId();
+        return 0;
     }
 
     @Override

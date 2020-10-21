@@ -30,7 +30,7 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
 
     @Override
     public Shape getById(int id) {
-        return (Shape) query("SELECT * FROM shape WHERE id = ?", statement -> {
+        return (Shape) query("SELECT * FROM shape WHERE shapeID = ?", statement -> {
             statement.setInt(1, id);
 
             ResultSet resultSet = statement.executeQuery();
@@ -75,6 +75,9 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
         });
     }
 
+    public void getLatestId() {
+        query("SELECT id FROM shape_information ORDER BY id DESC LIMIT 1", PreparedStatement::execute);
+    }
 
     @Override
     Shape recordToEntity(ResultSet resultSet) throws SQLException {
