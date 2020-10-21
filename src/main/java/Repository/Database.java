@@ -1,5 +1,4 @@
-package repository;
-
+package Repository;
 import java.sql.*;
 
 abstract class Database<E> {

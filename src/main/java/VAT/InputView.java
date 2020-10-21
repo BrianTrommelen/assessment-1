@@ -14,14 +14,16 @@ public class InputView {
     private final ComboBox<Object> usableShapes = new ComboBox<>();
     private final List<TextField> textFields = new ArrayList<>();
 
-    public InputView(Shapes shapes) { this.shapes = shapes; }
+    public InputView(Shapes shapes) {
+        this.shapes = shapes;
+    }
 
     public Parent getView() {
         // Create components
         GridPane components = new GridPane();
 
         // Shapes that can be chosen
-        usableShapes.getItems().addAll(this.shapes.getAllShapes());
+        usableShapes.getItems().addAll(shapes.getUsableShapes());
         usableShapes.setValue("Choose shape");
 
         // Set components
@@ -95,27 +97,27 @@ public class InputView {
         // Name changeable on every shape
         showHideField(nameField, true);
 
-        if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getShapeById(1))) {
+        if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(0))) {
             showHideField(radiusField, true);
             showHideField(heightField, false);
             showHideField(widthField, false);
             showHideField(lengthField, false);
-        } else if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getShapeById(2))) {
+        } else if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(1))) {
             showHideField(radiusField, true);
             showHideField(heightField, true);
             showHideField(widthField, false);
             showHideField(lengthField, false);
-        } else if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getShapeById(3))) {
+        } else if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(2))) {
             showHideField(radiusField, true);
             showHideField(heightField, true);
             showHideField(widthField, false);
             showHideField(lengthField, false);
-        } else if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getShapeById(4))) {
+        } else if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(3))) {
             showHideField(radiusField, false);
             showHideField(heightField, true);
             showHideField(widthField, true);
             showHideField(lengthField, false);
-        } else if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getShapeById(5))) {
+        } else if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(4))) {
             showHideField(radiusField, false);
             showHideField(heightField, true);
             showHideField(widthField, true);

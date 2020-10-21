@@ -1,17 +1,12 @@
 package Shape;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface Shapes {
     void saveShape(Shape shape);
-
-    Shape searchShape(String name);
-
+    Shape searchShape(int id);
     void deleteShape(Shape shape);
-
     Collection<Shape> getAllShapes();
-
-    Object getShapeById(int id);
-
-    int latestShape();
+    List<String> getUsableShapes();
 }

@@ -1,18 +1,12 @@
 package Service;
 
 import Shape.Shape;
-import Shape.ShapeActions;
-import repository.ShapeDatabase;
+import Repository.ShapeDatabase;
 
 import java.util.List;
 
 public class ShapeService {
     private final ShapeDatabase database = new ShapeDatabase();
-
-
-    public ShapeService() {
-
-    }
 
     public List<Shape> getAll() {
         return database.getAll();
@@ -26,8 +20,6 @@ public class ShapeService {
         return database.getById(id);
     }
 
-    public void getLatestId() { database.getLatestId(); }
-
     public void update(int id, Shape shape) {
         database.update(id, shape);
     }
@@ -39,4 +31,6 @@ public class ShapeService {
     public void deleteAll() {
         database.deleteAll();
     }
+
+    public List<String> getUsableShapes() { return database.getUsableShapes(); }
 }

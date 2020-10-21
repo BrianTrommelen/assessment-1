@@ -4,7 +4,6 @@ import Service.ShapeService;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ShapeActions implements Shapes {
@@ -18,10 +17,8 @@ public class ShapeActions implements Shapes {
     }
 
     @Override
-    public Shape searchShape(String name) {
-        Optional<Shape> found = shapeList.stream()
-                .filter(p -> p.getName().equals(name)).findFirst();
-        Shape result = found.isEmpty() ? null : found.get();
+    public Shape searchShape(int id) {
+        Shape result = shapeService.getSingle(id);
 
         System.out.println(result == null ? "No shape found" : "found: " + result);
 
@@ -34,14 +31,7 @@ public class ShapeActions implements Shapes {
     }
 
     @Override
-    public Shape getShapeById(int shapeId) {
-        return shapeService.getSingle(shapeId);
-    }
-
-    @Override
-    public int latestShape() { shapeService.getLatestId();
-        return 0;
-    }
+    public List<String> getUsableShapes() { return shapeService.getUsableShapes(); }
 
     @Override
     public void deleteShape(Shape shape) {
