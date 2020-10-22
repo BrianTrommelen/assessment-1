@@ -9,14 +9,19 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Main extends Application {
 
     private Shapes shapes;
 
     @Override
-    public void init() {
+    public void init() throws IOException {
         this.shapes = new ShapeActions();
         System.out.println(shapes.getAllShapes());
+
+//        shapes.exportShapes();
+//        shapes.importShapes();
     }
 
     @Override

@@ -7,6 +7,13 @@ public class Cylinder extends Shape implements Calculate {
     private double radius;
     private double height;
 
+    public Cylinder(int id, String name, double radius, double height, double volume) {
+        super(id, name);
+        this.shapeNum = 2;
+        this.radius = radius;
+        this.height = height;
+        this.volume = volume;
+    }
     public Cylinder(int id, String name, double radius, double height) {
         super(id, name);
         this.shapeNum = 2;
@@ -43,13 +50,6 @@ public class Cylinder extends Shape implements Calculate {
 
     @Override
     public String toString() {
-        return "Cylinder{" +
-                "radius=" + radius +
-                ", height=" + height +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", shapeNum=" + shapeNum +
-                ", volume=" + volume +
-                '}';
+        return id + "-" + name + "-" + shapeNum + "-" + radius + "-" + height + "-" + volume;
     }
 }
