@@ -12,7 +12,6 @@ public class ShapeActions implements Shapes {
 
     @Override
     public void saveShape(Shape shape) {
-        System.out.println("Saved shape\n" + shape);
         shapeService.create(shape);
     }
 

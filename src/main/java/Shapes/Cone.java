@@ -7,8 +7,16 @@ public class Cone extends Shape implements Calculate {
     private double radius;
     private double height;
 
-    public Cone(int id, String name, double radius, double height) {
-        super(id,name);
+    public Cone(int shapeId, String name, double radius, double height) {
+        super(shapeId, name);
+        this.shapeNum = 3;
+        this.radius = radius;
+        this.height = height;
+        this.volume = this.calculateVolume();
+    }
+
+    public Cone(String name, double radius, double height) {
+        super(name);
         this.shapeNum = 3;
         this.radius = radius;
         this.height = height;
@@ -46,7 +54,6 @@ public class Cone extends Shape implements Calculate {
         return "Cone{" +
                 "radius=" + radius +
                 ", height=" + height +
-                ", id=" + id +
                 ", name='" + name + '\'' +
                 ", shapeNum=" + shapeNum +
                 ", volume=" + volume +
