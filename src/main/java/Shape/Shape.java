@@ -24,6 +24,10 @@ public abstract class Shape implements Calculate  {
         return this.shapeNum;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

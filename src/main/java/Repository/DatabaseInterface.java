@@ -10,10 +10,11 @@ public interface DatabaseInterface {
     void update(int id, Shape shape);
 
     Shape getById(int id);
+    Shape getByName(String name);
 
-    void delete(Shape person);
+    void deleteFromName(String name);
 
-    void delete(int id);
+    void deleteFromId(int id);
 
     void deleteAll();
 

@@ -25,7 +25,7 @@ public class ShapeActions implements Shapes {
 
     @Override
     public Shape searchShape(int id) {
-        Shape result = shapeService.getSingle(id);
+        Shape result = shapeService.getSingleById(id);
 
         System.out.println(result == null ? "No shape found" : "found: " + result);
 

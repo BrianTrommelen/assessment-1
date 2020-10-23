@@ -23,6 +23,14 @@ public class Pyramid extends Shape implements Calculate {
         this.volume = this.calculateVolume();
     }
 
+    public Pyramid(String name, double width, double height) {
+        super( name);
+        this.shapeNum = 4;
+        this.width = width;
+        this.height = height;
+        this.volume = this.calculateVolume();
+    }
+
     @Override
     public double getVolume() {
         return volume;

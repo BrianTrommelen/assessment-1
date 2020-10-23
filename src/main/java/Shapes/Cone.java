@@ -23,6 +23,14 @@ public class Cone extends Shape implements Calculate {
         this.volume = this.calculateVolume();
     }
 
+    public Cone(String name, double radius, double height) {
+        super(name);
+        this.shapeNum = 3;
+        this.radius = radius;
+        this.height = height;
+        this.volume = this.calculateVolume();
+    }
+
     @Override
     public double getVolume() {
         return volume;

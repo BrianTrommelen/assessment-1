@@ -112,12 +112,31 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
     }
 
     @Override
-    public void delete(Shape shape) {
+    public Shape getByName(String name) {
+        return (Shape) query("SELECT * FROM shape_information WHERE name = ?", statement -> {
+            statement.setString(1, name);
 
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return recordToEntity(resultSet);
+            } else {
+                return null;
+            }
+        });
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteFromName(String name) {
+        query("DELETE FROM shape_information WHERE name = ?", statement -> {
+            statement.setString(1, name);
+
+            return statement.execute();
+        });
+    }
+
+    @Override
+    public void deleteFromId(int id) {
         query("DELETE FROM shape_information WHERE id = ?", statement -> {
             statement.setInt(1, id);
 

@@ -12,6 +12,13 @@ public class Sphere extends Shape implements Calculate {
         this.radius = radius;
         this.volume = volume;
     }
+    public Sphere(int id, String name, double radius) {
+        super(id, name);
+        this.shapeNum = 1;
+        this.radius = radius;
+        this.volume = this.calculateVolume();
+    }
+
     public Sphere(String name, double radius) {
         super(name);
         this.shapeNum = 1;

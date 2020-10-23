@@ -14,6 +14,7 @@ public class Cylinder extends Shape implements Calculate {
         this.height = height;
         this.volume = volume;
     }
+
     public Cylinder(int id, String name, double radius, double height) {
         super(id, name);
         this.shapeNum = 2;
@@ -21,6 +22,15 @@ public class Cylinder extends Shape implements Calculate {
         this.height = height;
         this.volume = this.calculateVolume();
     }
+
+    public Cylinder(String name, double radius, double height) {
+        super(name);
+        this.shapeNum = 2;
+        this.radius = radius;
+        this.height = height;
+        this.volume = this.calculateVolume();
+    }
+
 
     @Override
     public double getVolume() {

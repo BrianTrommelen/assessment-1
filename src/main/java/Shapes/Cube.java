@@ -26,6 +26,15 @@ public class Cube extends Shape implements Calculate {
         this.volume = this.calculateVolume();
     }
 
+    public Cube(String name, double width, double length, double height) {
+        super(name);
+        this.shapeNum = 5;
+        this.width = width;
+        this.length = length;
+        this.height = height;
+        this.volume = this.calculateVolume();
+    }
+
     @Override
     public double getVolume() {
         return volume;
