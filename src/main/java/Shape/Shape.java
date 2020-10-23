@@ -21,7 +21,11 @@ public abstract class Shape implements Calculate  {
     public abstract double getVolume();
 
     public int getShapeNum() {
-        return 0;
+        return this.shapeNum;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {

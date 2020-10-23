@@ -1,6 +1,7 @@
 package VAT;
 
 import Shape.Shapes;
+import Shapes.*;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -60,6 +61,39 @@ public class InputView {
 
         // Event for the save button
         addButton.setOnAction((e) -> {
+            String name = nameField.getText();
+            double radius = radiusField.getText().isEmpty() ? 0 : Double.parseDouble(radiusField.getText());
+            double width = widthField.getText().isEmpty() ? 0 : Double.parseDouble(widthField.getText());
+            double height = heightField.getText().isEmpty() ? 0 : Double.parseDouble(heightField.getText());
+            double length = lengthField.getText().isEmpty() ? 0 : Double.parseDouble(lengthField.getText());
+
+            if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(0))) {
+                shapes.saveShape(new Sphere(name, radius));
+            }
+
+            if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(1))) {
+                shapes.saveShape(new Cylinder(name, radius, height));
+            }
+
+            if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(2))) {
+                shapes.saveShape(new Cone(name, radius, height));
+            }
+
+            if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(3))) {
+                shapes.saveShape(new Pyramid(name, width, height));
+            }
+
+            if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(4))) {
+                shapes.saveShape(new Cube(name, width, length, height));
+            }
+
+            // Whatever the committed fields where clear them all;
+            for (int i = 0; i < textFields.size(); i++) {
+                if (textFields.get(i).getText().isEmpty()) {
+                    textFields.get(i).setText(null);
+                }
+                textFields.get(i).clear();
+            }
         });
 
         // Set default components in the right position
@@ -84,15 +118,13 @@ public class InputView {
 
         components.setHgap(10);
         components.setVgap(10);
-        components.setPadding(new Insets(10, 10, 10, 10));
+        components.setPadding(new Insets(15, 15, 15, 15));
 
         return components;
     }
 
     private void showFields(TextField nameField, TextField radiusField,
                             TextField heightField, TextField widthField, TextField lengthField) {
-
-        System.out.println(usableShapes.getValue());
 
         // Name changeable on every shape
         showHideField(nameField, true);
