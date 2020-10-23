@@ -112,12 +112,31 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
     }
 
     @Override
-    public void delete(Shape shape) {
+    public Shape getByName(String name) {
+        return (Shape) query("SELECT * FROM shape_information WHERE name = ?", statement -> {
+            statement.setString(1, name);
 
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return recordToEntity(resultSet);
+            } else {
+                return null;
+            }
+        });
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteFromName(String name) {
+        query("DELETE FROM shape_information WHERE name = ?", statement -> {
+            statement.setString(1, name);
+
+            return statement.execute();
+        });
+    }
+
+    @Override
+    public void deleteFromId(int id) {
         query("DELETE FROM shape_information WHERE id = ?", statement -> {
             statement.setInt(1, id);
 
@@ -170,12 +189,13 @@ public class ShapeDatabase extends Database implements DatabaseInterface {
         double width = resultSet.getDouble(5);
         double length = resultSet.getDouble(6);
         double height = resultSet.getDouble(7);
+        double volume = resultSet.getDouble(8);
 
-        if (shape == 1) return new Sphere(shapeId, name, radius);
-        else if (shape == 2) return new Cylinder(shapeId, name, radius, height);
-        else if (shape == 3) return new Cone(shapeId, name, radius, height);
-        else if (shape == 4) return new Pyramid(shapeId, name, width, height);
-        else if (shape == 5) return new Cube(shapeId, name, width, length, height);
+        if (shape == 1) return new Sphere(shapeId, name, radius, volume);
+        else if (shape == 2) return new Cylinder(shapeId, name, radius, height, volume);
+        else if (shape == 3) return new Cone(shapeId, name, radius, height, volume);
+        else if (shape == 4) return new Pyramid(shapeId, name, width, height, volume);
+        else if (shape == 5) return new Cube(shapeId, name, width, length, height, volume);
         else return null;
     }
 }

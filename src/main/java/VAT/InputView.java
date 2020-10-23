@@ -84,7 +84,7 @@ public class InputView {
             }
 
             if (usableShapes.getSelectionModel().getSelectedItem().equals(this.shapes.getUsableShapes().get(4))) {
-                shapes.saveShape(new Cube(name, width, height, length));
+                shapes.saveShape(new Cube(name, width, length, height));
             }
 
             // Whatever the committed fields where clear them all;

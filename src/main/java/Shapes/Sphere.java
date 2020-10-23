@@ -6,8 +6,14 @@ import Shape.Calculate;
 public class Sphere extends Shape implements Calculate {
     private double radius;
 
-    public Sphere(int shapeId, String name, double radius) {
-        super(shapeId, name);
+    public Sphere(int id, String name, double radius, double volume) {
+        super(id, name);
+        this.shapeNum = 1;
+        this.radius = radius;
+        this.volume = volume;
+    }
+    public Sphere(int id, String name, double radius) {
+        super(id, name);
         this.shapeNum = 1;
         this.radius = radius;
         this.volume = this.calculateVolume();
@@ -43,11 +49,6 @@ public class Sphere extends Shape implements Calculate {
 
     @Override
     public String toString() {
-        return "Sphere{" +
-                "radius=" + radius +
-                ", name='" + name + '\'' +
-                ", shapeNum=" + shapeNum +
-                ", volume=" + volume +
-                '}';
+        return id + "-" + name + "-" + shapeNum + "-" + radius + "-" + volume;
     }
 }

@@ -16,16 +16,23 @@ public class ShapeService {
         database.save(shape);
     }
 
-    public Shape getSingle(int id) {
+    public Shape getSingleById(int id) {
         return database.getById(id);
+    }
+
+    public Shape getSingleByName(String name) {
+        return database.getByName(name);
     }
 
     public void update(int id, Shape shape) {
         database.update(id, shape);
     }
 
-    public void deleteSingle(int id) {
-        database.delete(id);
+    public void deleteSingleFromId(int id) {
+        database.deleteFromId(id);
+    }
+    public void deleteSingleFromName(String name) {
+        database.deleteFromName(name);
     }
 
     public void deleteAll() {

@@ -2,6 +2,7 @@ package VAT;
 
 import Shape.Shape;
 import Shape.Shapes;
+import Shapes.*;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -21,8 +22,6 @@ public class listView {
     }
 
     public Node getView() {
-        ListView<Shape> shapeListView = new ListView<>();
-
         // Create components
         GridPane components = new GridPane();
         ScrollPane scrollPane = new ScrollPane();
@@ -42,6 +41,7 @@ public class listView {
         for (Shape allShape : shapes.getAllShapes()) {
             row++;
             Label name = new Label(allShape.getName());
+            Label volume = new Label(String.format("%.2f", allShape.getVolume()));
 
             name.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -55,6 +55,12 @@ public class listView {
                                 Stage stage = new Stage();
                                 stage.setScene(scene);
 
+                                Label nameText = new Label("Name:");
+                                Label radiusText = new Label("Radius:");
+                                Label heightText = new Label("Height:");
+                                Label widthText = new Label("Width:");
+                                Label lengthText = new Label("Length:");
+
                                 TextField updateName = new TextField(allShape.getName());
                                 TextField updateRadius = new TextField(Double.toString(allShape.getRadius()));
                                 TextField updateHeight = new TextField(Double.toString(allShape.getHeight()));
@@ -62,52 +68,80 @@ public class listView {
                                 TextField updateLength = new TextField(Double.toString(allShape.getLength()));
 
                                 Button updateButton = new Button("Update");
-                                updateEvent(updateButton);
+                                updateButton.setOnAction((e) -> {
+                                    try {
+                                        String name = updateName.getText();
+                                        double radius = updateRadius.getText().isEmpty() ? 0 :
+                                                Double.parseDouble(updateRadius.getText());
+                                        double width = updateWidth.getText().isEmpty() ? 0 :
+                                                Double.parseDouble(updateWidth.getText());
+                                        double height = updateHeight.getText().isEmpty() ? 0 :
+                                                Double.parseDouble(updateHeight.getText());
+                                        double length = updateLength.getText().isEmpty() ? 0 :
+                                                Double.parseDouble(updateLength.getText());
 
+                                        if (allShape.getShapeNum() == 1) {
+                                            shapes.updateShape(allShape.getId(), new Sphere(name, radius));
+                                        }
+                                        if (allShape.getShapeNum() == 2) {
+                                            shapes.updateShape(allShape.getId(), new Cylinder(name, radius, height));
+                                        }
+                                        if (allShape.getShapeNum() == 3) {
+                                            shapes.updateShape(allShape.getId(), new Cone(name, radius, height));
+                                        }
+                                        if (allShape.getShapeNum() == 4) {
+                                            shapes.updateShape(allShape.getId(), new Pyramid(name, width, height));
+                                        }
+                                        if (allShape.getShapeNum() == 5) {
+                                            shapes.updateShape(allShape.getId(), new Cube(name, width, length, height));
+                                        }
+                                        stage.close();
+                                    } catch (Exception error) {
+                                        System.out.println("Error in updating shape\n" + error);
+                                    }
+                                });
+
+                                Button deleteButton = new Button("Delete");
+                                deleteButton.setOnAction(event -> {
+                                    try {
+                                        shapes.deleteShape(allShape.getId());
+                                        stage.close();
+                                    } catch (Exception error) {
+                                        System.out.println("Error in deleting shape\n" + error);
+                                    }
+                                });
+
+                                pane.add(nameText, 0, 0);
                                 pane.add(updateName, 1, 0);
+
+                                pane.add(radiusText, 0, 1);
                                 pane.add(updateRadius, 1, 1);
+
+                                pane.add(heightText, 0, 2);
                                 pane.add(updateHeight, 1, 2);
+
+                                pane.add(widthText, 0, 3);
                                 pane.add(updateWidth, 1, 3);
+
+                                pane.add(lengthText, 0, 4);
                                 pane.add(updateLength, 1, 4);
-                                pane.add(updateButton, 1, 5);
+
+                                pane.add(updateButton, 0, 5);
+                                pane.add(deleteButton, 1, 5);
 
                                 pane.setPadding(new Insets(15, 15, 15, 15));
                                 pane.setHgap(10);
                                 pane.setVgap(10);
                                 stage.show();
                             }
-
                         }
                     }
                 }
             });
 
             gridPane.add(name, 0, row);
+            gridPane.add(volume, 5, row);
         }
     }
 
-    public void updateEvent(Button addButton) {
-        addButton.setOnAction((e) -> {
-            if (this.shapes.getUsableShapes().get(0) == "Sphere") {
-                shapes.searchShape(0);
-            }
-
-            if (this.shapes.getUsableShapes().get(1) == "Cylinder") {
-                shapes.searchShape(0);
-            }
-
-            if (this.shapes.getUsableShapes().get(2) == "Cone") {
-                shapes.searchShape(0);
-            }
-
-            if (this.shapes.getUsableShapes().get(3) == "Pyramid") {
-                shapes.searchShape(0);
-            }
-
-            if (this.shapes.getUsableShapes().get(4) == "Cube") {
-                shapes.searchShape(0);
-            }
-
-        });
-    }
 }

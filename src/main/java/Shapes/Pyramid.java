@@ -7,15 +7,24 @@ public class Pyramid extends Shape implements Calculate {
     private double width;
     private double height;
 
-    public Pyramid(int shapeId, String name, double width, double height) {
-        super(shapeId, name);
+    public Pyramid(int id, String name, double width, double height, double volume) {
+        super(id, name);
+        this.shapeNum = 4;
+        this.width = width;
+        this.height = height;
+        this.volume = volume;
+    }
+
+    public Pyramid(int id, String name, double width, double height) {
+        super(id, name);
         this.shapeNum = 4;
         this.width = width;
         this.height = height;
         this.volume = this.calculateVolume();
     }
+
     public Pyramid(String name, double width, double height) {
-        super(name);
+        super( name);
         this.shapeNum = 4;
         this.width = width;
         this.height = height;
@@ -50,12 +59,6 @@ public class Pyramid extends Shape implements Calculate {
 
     @Override
     public String toString() {
-        return "Pyramid{" +
-                "width=" + width +
-                ", height=" + height +
-                ", name='" + name + '\'' +
-                ", shapeNum=" + shapeNum +
-                ", volume=" + volume +
-                '}';
+         return id + "-" + name + "-" + shapeNum + "-" + width + "-" + height + "-" + volume;
     }
 }

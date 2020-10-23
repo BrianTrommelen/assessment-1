@@ -3,23 +3,29 @@ package Shape;
 import java.util.Objects;
 
 public abstract class Shape implements Calculate  {
+    protected int id;
     protected String name;
     protected int shapeNum;
     protected double volume;
 
-    public Shape(int shapeId, String name) {
-        shapeNum = shapeId;
+    public Shape(int id,String name) {
+        this.id = id;
         this.name = name;
     }
 
     public Shape(String name) {
+        this.id = 0;
         this.name = name;
     }
 
     public abstract double getVolume();
 
     public int getShapeNum() {
-        return shapeNum;
+        return this.shapeNum;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {

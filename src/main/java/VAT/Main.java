@@ -3,20 +3,18 @@ package VAT;
 import Shape.ShapeActions;
 import Shape.Shapes;
 import javafx.application.Application;
-import javafx.geometry.Orientation;
-import javafx.geometry.Side;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollBar;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Main extends Application {
     private Shapes shapes;
 
     @Override
-    public void init() {
+    public void init() throws IOException {
         this.shapes = new ShapeActions();
     }
 
