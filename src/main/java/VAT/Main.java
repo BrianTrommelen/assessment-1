@@ -23,19 +23,22 @@ public class Main extends Application {
         stage.setTitle("VAT Calculator");
 
         InputView inputView = new InputView(shapes);
-        listView listView = new listView(shapes);
+        ShapeView shapeView = new ShapeView(shapes);
 
         TabPane layout = new TabPane();
 
         Tab addShape = new Tab("Add Shape:", inputView.getView());
-        Tab shapeList = new Tab("Shapes:", listView.getView());
+        Tab shapeList = new Tab("Shapes:", shapeView.getView());
+
         layout.getTabs().add(addShape);
         layout.getTabs().add(shapeList);
 
-        Scene view = new Scene(layout, 400, 400);
+        Scene view = new Scene(layout, 400, 500);
         stage.setScene(view);
         stage.show();
     }
 
-    public static void main(String[] args) { launch(args); }
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

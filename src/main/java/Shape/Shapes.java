@@ -15,4 +15,5 @@ public interface Shapes {
     List<String> getUsableShapes();
     void exportShapes() throws IOException;
     void importShapes() throws FileNotFoundException;
+    double calculateAllVolumes();
 }

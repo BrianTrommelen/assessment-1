@@ -54,7 +54,7 @@ public class Cylinder extends Shape implements Calculate {
 
     @Override
     public double calculateVolume() {
-        double volume = Math.round ((radius*radius*Math.PI)*height);
+        double volume = (radius*radius*Math.PI)*height;
         return (double)Math.round(volume * 100d) / 100d;
     }
 
