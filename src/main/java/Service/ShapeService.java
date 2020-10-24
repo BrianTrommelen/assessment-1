@@ -31,6 +31,7 @@ public class ShapeService {
     public void deleteSingleFromId(int id) {
         database.deleteFromId(id);
     }
+
     public void deleteSingleFromName(String name) {
         database.deleteFromName(name);
     }
