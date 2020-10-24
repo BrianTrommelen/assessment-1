@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class ShapeActions implements Shapes {
     private List<Shape> shapeList;
@@ -42,7 +41,9 @@ public class ShapeActions implements Shapes {
     }
 
     @Override
-    public List<String> getUsableShapes() { return shapeService.getUsableShapes(); }
+    public List<String> getUsableShapes() {
+        return shapeService.getUsableShapes();
+    }
 
     @Override
     public void exportShapes() throws IOException {
@@ -77,7 +78,7 @@ public class ShapeActions implements Shapes {
 
             deleteAll();
 
-            while(input.hasNext()) {
+            while (input.hasNext()) {
                 int id = input.nextInt();
                 String name = input.next();
                 int shapeId = input.nextInt();
@@ -122,6 +123,15 @@ public class ShapeActions implements Shapes {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public double calculateAllVolumes() {
+        double sum = 0;
+        for (Shape shape : shapeService.getAll()) {
+            sum = sum + shape.getVolume();
+        }
+        return sum;
     }
 
     @Override

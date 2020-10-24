@@ -62,7 +62,7 @@ public class Cube extends Shape implements Calculate {
 
     @Override
     public double calculateVolume() {
-        double volume = Math.round (width*length*height);
+        double volume = width*length*height;
         return (double)Math.round(volume * 100d) / 100d;
     }
 
