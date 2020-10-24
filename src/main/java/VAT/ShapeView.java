@@ -48,6 +48,9 @@ public class ShapeView {
         Label lengthText = new Label("Length:");
         TextField lengthField = new TextField();
 
+        Label shapeText = new Label("Shape:");
+        TextField shapeField = new TextField();
+
         Button updateButton = new Button("Update");
         Button deleteButton = new Button("Delete");
         Button importButton = new Button("Import");
@@ -58,6 +61,7 @@ public class ShapeView {
         textFields.add(heightField);
         textFields.add(widthField);
         textFields.add(lengthField);
+        textFields.add(shapeField);
 
         for (int i = 0; i < textFields.size(); i++) {
             textFields.get(i).setEditable(false);
@@ -84,14 +88,79 @@ public class ShapeView {
                             heightField.setText(Double.toString(allShape.getHeight()));
                             widthField.setText(Double.toString(allShape.getWidth()));
                             lengthField.setText(Double.toString(allShape.getLength()));
+                            if (allShape.getShapeNum() == 1) {
+                                shapeField.setText("Sphere");
+                                showHideField(radiusField, true);
+                                showHideField(heightField, false);
+                                showHideField(widthField, false);
+                                showHideField(lengthField, false);
+                            }
+                            else if (allShape.getShapeNum() == 2){
+                                shapeField.setText("Cylinder");
+                                showHideField(radiusField, true);
+                                showHideField(heightField, true);
+                                showHideField(widthField, false);
+                                showHideField(lengthField, false);
+                            }
+                            else if (allShape.getShapeNum() == 3) {
+                                shapeField.setText("Cone");
+                                showHideField(radiusField, true);
+                                showHideField(heightField, true);
+                                showHideField(widthField, false);
+                                showHideField(lengthField, false);
+                            }
+                            else if (allShape.getShapeNum() == 4) {
+                                shapeField.setText("Pyramid");
+                                showHideField(radiusField, false);
+                                showHideField(heightField, true);
+                                showHideField(widthField, true);
+                                showHideField(lengthField, false);
+                            }
+
+                            else if (allShape.getShapeNum() == 5) {
+                                shapeField.setText("Cube");
+                                showHideField(radiusField, false);
+                                showHideField(heightField, true);
+                                showHideField(widthField, true);
+                                showHideField(lengthField, true);
+                            }
 
                             TextField volume = new TextField(String.format("%.2f", allShape.getVolume()));
                             volume.setEditable(false);
                             volume.setStyle("-fx-background-color: #e4e4e4;");
                             layout.add(volume, 1, 5);
 
-                            update(nameField, radiusField, heightField,
-                                    widthField, lengthField, updateButton);
+                            updateButton.setOnAction((e) -> {
+                                try {
+                                    String name = nameField.getText();
+                                    double radius = radiusField.getText().isEmpty() ? 0 :
+                                            Double.parseDouble(radiusField.getText());
+                                    double width = widthField.getText().isEmpty() ? 0 :
+                                            Double.parseDouble(widthField.getText());
+                                    double height = heightField.getText().isEmpty() ? 0 :
+                                            Double.parseDouble(heightField.getText());
+                                    double length = lengthField.getText().isEmpty() ? 0 :
+                                            Double.parseDouble(lengthField.getText());
+
+                                    if (allShape.getShapeNum() == 1) {
+                                        shapes.updateShape(allShape.getId(), new Sphere(name, radius));
+                                    }
+                                    if (allShape.getShapeNum() == 2) {
+                                        shapes.updateShape(allShape.getId(), new Cylinder(name, radius, height));
+                                    }
+                                    if (allShape.getShapeNum() == 3) {
+                                        shapes.updateShape(allShape.getId(), new Cone(name, radius, height));
+                                    }
+                                    if (allShape.getShapeNum() == 4) {
+                                        shapes.updateShape(allShape.getId(), new Pyramid(name, width, height));
+                                    }
+                                    if (allShape.getShapeNum() == 5) {
+                                        shapes.updateShape(allShape.getId(), new Cube(name, width, length, height));
+                                    }
+                                } catch (Exception error) {
+                                    System.out.println("Error in updating shape\n" + error);
+                                }
+                            });
 
                             delete(allShape.getId(), deleteButton);
                         }
@@ -134,7 +203,7 @@ public class ShapeView {
         Label volumeText = new Label("Volume:");
         layout.add(volumeText, 0, 5, 1, 1);
 
-        Label allVolumesText = new Label("Volume:");
+        Label allVolumesText = new Label("All volumes:");
         layout.add(allVolumesText, 0, 6, 1, 1);
         TextField allVolumes = new TextField(String.format("%.2f", shapes.calculateAllVolumes()));
         layout.add(allVolumes, 1, 6, 1, 1);
@@ -146,49 +215,17 @@ public class ShapeView {
         layout.add(importButton, 3, 1, 1, 1);
         layout.add(exportButton, 4, 1, 1, 1);
 
+        layout.add(shapeText, 3, 2, 2, 1);
+        layout.add(shapeField, 4, 2, 2, 1);
+        shapeField.setEditable(false);
+        shapeField.setStyle("-fx-background-color: #e4e4e4;");
+
         layout.add(scrollPane, 0, 8, 5, 1);
 
         layout.setPadding(new Insets(15, 15, 15, 15));
         layout.setHgap(10);
         layout.setVgap(10);
         return layout;
-    }
-
-    public void update(TextField nameField, TextField radiusField, TextField heightField,
-                       TextField widthField, TextField lengthField, Button updateButton) {
-        for (Shape allShape : shapes.getAllShapes()) {
-            updateButton.setOnAction((e) -> {
-                try {
-                    String name = nameField.getText();
-                    double radius = radiusField.getText().isEmpty() ? 0 :
-                            Double.parseDouble(radiusField.getText());
-                    double width = widthField.getText().isEmpty() ? 0 :
-                            Double.parseDouble(widthField.getText());
-                    double height = heightField.getText().isEmpty() ? 0 :
-                            Double.parseDouble(heightField.getText());
-                    double length = lengthField.getText().isEmpty() ? 0 :
-                            Double.parseDouble(lengthField.getText());
-
-                    if (allShape.getShapeNum() == 1) {
-                        shapes.updateShape(allShape.getId(), new Sphere(name, radius));
-                    }
-                    if (allShape.getShapeNum() == 2) {
-                        shapes.updateShape(allShape.getId(), new Cylinder(name, radius, height));
-                    }
-                    if (allShape.getShapeNum() == 3) {
-                        shapes.updateShape(allShape.getId(), new Cone(name, radius, height));
-                    }
-                    if (allShape.getShapeNum() == 4) {
-                        shapes.updateShape(allShape.getId(), new Pyramid(name, width, height));
-                    }
-                    if (allShape.getShapeNum() == 5) {
-                        shapes.updateShape(allShape.getId(), new Cube(name, width, length, height));
-                    }
-                } catch (Exception error) {
-                    System.out.println("Error in updating shape\n" + error);
-                }
-            });
-        }
     }
 
     public void delete(int id, Button deleteButton) {
@@ -199,5 +236,15 @@ public class ShapeView {
                 System.out.println("Error in deleting shape\n" + error);
             }
         });
+    }
+
+    public void showHideField(TextField textField, boolean showOrHide) {
+        textField.setEditable(showOrHide);
+
+        if (!showOrHide) {
+            textField.setStyle("-fx-background-color: #e4e4e4;");
+        } else {
+            textField.setStyle("-fx-background-color: #fff;");
+        }
     }
 }
