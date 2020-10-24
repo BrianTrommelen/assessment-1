@@ -1,12 +1,9 @@
 package test;
 
-import Service.ShapeService;
-import Shape.Shape;
 import Shapes.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 public class ShapeFormulaTest {
 
@@ -19,12 +16,14 @@ public class ShapeFormulaTest {
 
         // Act
 
-        double expected = Math.round (((double)1/3)* (Math.pow(cone.getRadius(), 2)*Math.PI)*cone.getHeight());
+        double expected = ((double)1/3)* (Math.pow(cone.getRadius(), 2)*Math.PI)*cone.getHeight();
         double actual = cone.calculateVolume();
+
+        double formatted = Math.round(expected * 100d) / 100d;
 
         // Assert
 
-        assertEquals(actual, expected, DELTA);
-        System.out.println("Volume from expected: " + expected + "\n" + "Volume from actual: " + actual);
+        assertEquals(formatted, actual, DELTA);
+        System.out.println("Volume from expected: " + formatted + "\n" + "Volume from actual: " + actual);
     }
 }
