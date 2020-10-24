@@ -53,7 +53,7 @@ public class Pyramid extends Shape implements Calculate {
 
     @Override
     public double calculateVolume() {
-        double volume = Math.round (((double) 1/3 )*Math.pow(width, 2)*height);
+        double volume = ((double) 1/3 )*Math.pow(width, 2)*height;
         return (double)Math.round(volume * 100d) / 100d;
     }
 
