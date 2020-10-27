@@ -84,38 +84,33 @@ public class ShapeActions implements Shapes {
                 int shapeId = input.nextInt();
                 if (shapeId == 1) {
                     double radius = Double.valueOf(input.next());
-                    double volume = Double.valueOf(input.next());
 
-                    Sphere shape = new Sphere(id, name, radius, volume);
+                    Sphere shape = new Sphere(id, name, radius);
                     saveShape(shape);
                 } else if (shapeId == 2) {
                     double radius = Double.valueOf(input.next());
                     double height = Double.valueOf(input.next());
-                    double volume = Double.valueOf(input.next());
 
-                    Cylinder shape = new Cylinder(id, name, radius, height, volume);
+                    Cylinder shape = new Cylinder(id, name, radius, height);
                     saveShape(shape);
                 } else if (shapeId == 3) {
                     double radius = Double.valueOf(input.next());
                     double height = Double.valueOf(input.next());
-                    double volume = Double.valueOf(input.next());
 
-                    Cone shape = new Cone(id, name, radius, height, volume);
+                    Cone shape = new Cone(id, name, radius, height);
                     saveShape(shape);
                 } else if (shapeId == 4) {
                     double width = Double.valueOf(input.next());
                     double height = Double.valueOf(input.next());
-                    double volume = Double.valueOf(input.next());
 
-                    Pyramid shape = new Pyramid(id, name, width, height, volume);
+                    Pyramid shape = new Pyramid(id, name, width, height);
                     saveShape(shape);
                 } else if (shapeId == 5) {
                     double width = Double.valueOf(input.next());
                     double length = Double.valueOf(input.next());
                     double height = Double.valueOf(input.next());
-                    double volume = Double.valueOf(input.next());
 
-                    Cube shape = new Cube(id, name, width, length, height, volume);
+                    Cube shape = new Cube(id, name, width, length, height);
                     saveShape(shape);
                 }
             }
